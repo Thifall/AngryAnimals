@@ -40,6 +40,7 @@ func set_release() -> void:
 	freeze = false
 	apply_central_impulse(get_impulse())
 	launch_sound.play()
+	SignalManager.onAttemptMade.emit()
 
 func setState(newState: ANIMAL_STATE) -> void:
 	_state = newState
@@ -114,4 +115,7 @@ func update(delta: float) ->  void:
 			
 func _on_sleeping_state_changed() -> void:
 	if sleeping:
+		var cb = get_colliding_bodies()
+		if cb.size() > 0:
+			cb[0].vanish()
 		call_deferred("die")
