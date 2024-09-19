@@ -1,17 +1,21 @@
 extends Node2D
 
+#region Const
 const ANIMAL = preload("res://Scenes/animal/animal.tscn")
-@onready var animal_start_point: Marker2D = $AnimalStartPoint
+const MAIN = preload("res://Scenes/Main/main.tscn")
+#endregion
 
-# Called when the node enters the scene tree for the first time.
+#region onready
+@onready var animal_start_point: Marker2D = $AnimalStartPoint
+#endregion
+
 func _ready() -> void:
 	SignalManager.onAnimalDied.connect(instantiateAnimalScene)
 	instantiateAnimalScene()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().change_scene_to_packed(MAIN)
 	
 func instantiateAnimalScene():
 	var newAnimal = ANIMAL.instantiate()
