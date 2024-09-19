@@ -13,10 +13,12 @@ var _drag_start: Vector2 = Vector2.ZERO
 var _dragged_vector: Vector2 = Vector2.ZERO
 var _last_dragged_vector: Vector2 = Vector2.ZERO
 var _arrow_scale_x: float = 0.0
+var _last_collision_count: int = 0
 
 @onready var stretch_sound: AudioStreamPlayer2D = $StretchSound
 @onready var launch_sound: AudioStreamPlayer2D = $LaunchSound
 @onready var arrow: Sprite2D = $Arrow
+@onready var wood_collision_sound: AudioStreamPlayer2D = $WoodCollisionSound
 
 func _ready() -> void:
 	_arrow_scale_x = arrow.scale.x
@@ -65,6 +67,16 @@ func updateOnDrag() -> void:
 	play_stretch_sound()
 	drag_in_limists()
 	scale_arrow()
+	
+func play_collision() -> void:
+	if (_last_collision_count == 0 && 
+		get_contact_count() > 0 && 
+		!wood_collision_sound.playing):
+		wood_collision_sound.play()
+	_last_collision_count = get_contact_count()
+
+func update_flight() -> void:
+	play_collision()
 
 func scale_arrow() -> void:
 	var impulse_length = get_impulse().length()
@@ -97,4 +109,9 @@ func update(delta: float) ->  void:
 	match _state:
 		ANIMAL_STATE.DRAG:
 			updateOnDrag()
+		ANIMAL_STATE.RELEASE:
+			update_flight()
 			
+func _on_sleeping_state_changed() -> void:
+	if sleeping:
+		call_deferred("die")
