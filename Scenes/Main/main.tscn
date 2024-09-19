@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://wo46bfv3mxdu"]
+
+[ext_resource type="Texture2D" uid="uid://bj767cnmdn0a" path="res://assets/env/MainBG.png" id="1_3le5w"]
+[ext_resource type="PackedScene" uid="uid://cl2fvixskm6ua" path="res://Scenes/level_button/level_button.tscn" id="2_7hecn"]
+[ext_resource type="LabelSettings" uid="uid://dj16rkmt5hui6" path="res://assets/lg_96_blue.tres" id="3_01o3b"]
+[ext_resource type="AudioStream" uid="uid://cxfm8vj375y1i" path="res://assets/audio/birdsong.wav" id="4_751fn"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3le5w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -50.0
+offset_right = 182.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="LevelButton1" parent="HBoxContainer" instance=ExtResource("2_7hecn")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="HBoxContainer" instance=ExtResource("2_7hecn")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="HBoxContainer" instance=ExtResource("2_7hecn")]
+layout_mode = 2
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -353.5
+offset_right = 353.5
+offset_bottom = 102.0
+grow_horizontal = 2
+rotation = 0.0523599
+theme_override_constants/margin_top = 12
+
+[node name="Label" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "ANGRY ANIMALS"
+label_settings = ExtResource("3_01o3b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_751fn")
+volume_db = -20.0
+autoplay = true
