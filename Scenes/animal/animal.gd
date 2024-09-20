@@ -56,7 +56,7 @@ func die() -> void:
 	SignalManager.onAnimalDied.emit()
 	queue_free()
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if _state == ANIMAL_STATE.READY and event.is_action_pressed("drag"):
 		setState(ANIMAL_STATE.DRAG)
 	
@@ -106,7 +106,7 @@ func detect_release() -> bool:
 			return true
 	return false
 
-func update(delta: float) ->  void:
+func update(_delta: float) ->  void:
 	match _state:
 		ANIMAL_STATE.DRAG:
 			updateOnDrag()

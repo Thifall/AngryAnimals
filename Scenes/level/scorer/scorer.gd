@@ -14,8 +14,10 @@ func _ready() -> void:
 	
 func onAttemptMade() -> void:
 	_attempts += 1
+	SignalManager.emitOnScoreUpdated(_attempts)
 	
 func onCupDestroyed() -> void:
 	_cups_hit += 1
 	if _cups_hit == _total_cups:
-		pass
+		SignalManager.onLevelComplete.emit()
+		ScoreManager.set_score_for_level(_attempts, str(_level_number))

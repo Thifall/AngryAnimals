@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cypvttfh8kf4s" path="res://assets/ui/panel_beige.png" id="1_feeh6"]
 [ext_resource type="LabelSettings" uid="uid://hlfdhwyivqj0" path="res://assets/lg_48_white.tres" id="2_twfks"]
 [ext_resource type="Script" path="res://Scenes/level_button/level_button.gd" id="2_xh55t"]
-[ext_resource type="LabelSettings" uid="uid://dcuutdtt07r3e" path="res://assets/lg_24_white.tres" id="3_86hgy"]
+[ext_resource type="LabelSettings" uid="uid://dgj8rg7xb4j5r" path="res://assets/lg_20_white.tres" id="4_44a1d"]
 
 [node name="LevelButton" type="TextureButton"]
 anchors_preset = 8
@@ -23,11 +23,15 @@ script = ExtResource("2_xh55t")
 
 [node name="MC" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -45.0
+offset_right = 117.0
+offset_bottom = 45.0
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/margin_left = 3
 theme_override_constants/margin_top = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MC"]
@@ -42,8 +46,8 @@ vertical_alignment = 1
 
 [node name="ScoreLbl" type="Label" parent="MC/VBoxContainer"]
 layout_mode = 2
-text = "1000"
-label_settings = ExtResource("3_86hgy")
+text = "BEST: 1000"
+label_settings = ExtResource("4_44a1d")
 horizontal_alignment = 1
 vertical_alignment = 1
 
