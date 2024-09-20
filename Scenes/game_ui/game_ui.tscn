@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://cygoia851uv1h"]
+
+[ext_resource type="Script" path="res://Scenes/game_ui/game_ui.gd" id="1_afupm"]
+[ext_resource type="LabelSettings" uid="uid://cx7x7eu4ta4qh" path="res://assets/lg_48_gray.tres" id="1_uva54"]
+[ext_resource type="LabelSettings" uid="uid://dj16rkmt5hui6" path="res://assets/lg_96_blue.tres" id="2_jo8t4"]
+[ext_resource type="LabelSettings" uid="uid://vn7in1ru1cb8" path="res://assets/lg_64_blue_shadowed.tres" id="3_yya04"]
+[ext_resource type="AudioStream" uid="uid://bkdgqmoopxgag" path="res://assets/audio/jazzyfrenchy.mp3" id="4_51msp"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_afupm")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="Levellbl" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "LEVEL 10"
+label_settings = ExtResource("1_uva54")
+
+[node name="Attemptslbl" type="Label" parent="MC/VB"]
+layout_mode = 2
+text = "Attempts: 100"
+label_settings = ExtResource("1_uva54")
+
+[node name="VB2" type="VBoxContainer" parent="MC"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LabelComplete" type="Label" parent="MC/VB2"]
+layout_mode = 2
+text = "LEVEL COMPLETE"
+label_settings = ExtResource("2_jo8t4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelComplete2" type="Label" parent="MC/VB2"]
+layout_mode = 2
+text = "PRESS SPACE"
+label_settings = ExtResource("3_yya04")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_51msp")
+volume_db = -20.0
