@@ -2,9 +2,9 @@ extends RigidBody2D
 
 enum ANIMAL_STATE {READY, DRAG, RELEASE}
 
-const DRAG_MAX_LIMIT: Vector2 = Vector2(0, 90)
-const DRAG_MIN_LIMIT: Vector2 = Vector2(-90, 0)
-const IMPULSE_MULT: float = 20.0
+const DRAG_MAX_LIMIT: Vector2 = Vector2(0, 120)
+const DRAG_MIN_LIMIT: Vector2 = Vector2(-120, 0)
+const IMPULSE_MULT: float = 15.0
 const IMPULSE_MAX: float = 1200.0
 
 var _state: ANIMAL_STATE = ANIMAL_STATE.READY
@@ -95,8 +95,8 @@ func get_dragged_vector(gmp: Vector2) -> Vector2:
 	
 func drag_in_limists() -> void:
 	_last_dragged_vector = _dragged_vector
-	_dragged_vector.x = clampf(_dragged_vector.x, DRAG_MIN_LIMIT.x, DRAG_MAX_LIMIT.x)
-	_dragged_vector.y = clampf(_dragged_vector.y, DRAG_MIN_LIMIT.y, DRAG_MAX_LIMIT.y)
+	_dragged_vector.x = clampf(_dragged_vector.x, DRAG_MIN_LIMIT.x, DRAG_MAX_LIMIT.x) * 0.75
+	_dragged_vector.y = clampf(_dragged_vector.y, DRAG_MIN_LIMIT.y, DRAG_MAX_LIMIT.y) * 0.75
 	position = _start + _dragged_vector;
 
 func detect_release() -> bool:
